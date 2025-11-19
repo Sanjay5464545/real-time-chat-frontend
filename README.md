@@ -1,16 +1,60 @@
-# React + Vite
+# Real-Time Chat Application - Backend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Node.js backend server for a real-time chat application with Socket.io and MongoDB.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Real-time messaging using Socket.io
+- MongoDB integration for message persistence
+- Room-based chat system
+- Online users tracking
+- Typing indicators
+- Chat history loading
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Node.js** - Runtime environment
+- **Express** - Web framework
+- **Socket.io** - Real-time bidirectional communication
+- **MongoDB** - Database for message storage
+- **Mongoose** - MongoDB ODM
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository
+2. Install dependencies:
+
+
+npm install
+
+
+3. Create `.env` file:
+
+MONGO_URI=your_mongodb_connection_string
+PORT=5000
+
+
+4. Start the server:
+
+
+npm run dev
+
+
+Server will run on `http://localhost:5000`
+
+## Socket Events
+
+### Client → Server:
+- `joinRoom` - Join a specific chat room
+- `sendMessage` - Send a message to room
+- `typing` - Notify typing status
+
+### Server → Client:
+- `message` - Receive new message
+- `chatHistory` - Load previous messages
+- `onlineUsers` - Get list of online users
+- `userTyping` - Receive typing notification
+
+## Author
+
+MCA Graduate 2024
