@@ -41,7 +41,7 @@ function App() {
     return (
       <div className="app-container">
         <div className="join-container">
-          <h1>💬 Real-Time Chat App</h1>
+          <h1> Real-Time Chat App</h1>
           <form onSubmit={joinRoom}>
             <input
               type="text"

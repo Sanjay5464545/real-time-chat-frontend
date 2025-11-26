@@ -7,10 +7,9 @@ function MessageInput({ onSend, onTyping }) {
   const handleChange = (e) => {
     setMessage(e.target.value);
     
-    // Typing indicator
+   
     onTyping(true);
-    
-    // Clear previous timeout
+   
     if (typingTimeout.current) {
       clearTimeout(typingTimeout.current);
     }
@@ -18,7 +17,7 @@ function MessageInput({ onSend, onTyping }) {
     // Set new timeout to stop typing indicator
     typingTimeout.current = setTimeout(() => {
       onTyping(false);
-    }, 2000); // Increased to 2 seconds for better visibility
+    }, 2000);
   };
 
   const handleSubmit = (e) => {
@@ -26,8 +25,7 @@ function MessageInput({ onSend, onTyping }) {
     if (message.trim()) {
       onSend(message);
       setMessage('');
-      onTyping(false); // Stop typing when message is sent
-      
+      onTyping(false); 
       // Clear timeout
       if (typingTimeout.current) {
         clearTimeout(typingTimeout.current);

@@ -16,7 +16,7 @@ function OnlineUsersList({ users, currentUser }) {
 
   return (
     <div className="online-users">
-      <h3>🟢 Online ({users.length})</h3>
+      <h3> Online ({users.length})</h3>
       <ul>
         {users.map((user, index) => (
           <li key={index} className={user.username === currentUser ? 'current-user' : ''}>
