@@ -17,5 +17,9 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "id": "com.sanjay.chat",
+  "scope": "/",
+  "orientation": "any",
+  "dir": "ltr"
 }
