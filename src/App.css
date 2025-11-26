@@ -10,8 +10,11 @@ body {
   min-height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent body scroll on mobile */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 
 .app-container {
   width: 100%;
@@ -19,25 +22,25 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0; /* Remove padding on mobile */
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-/* ==================== JOIN SCREEN (Mobile Optimized) ==================== */
+/* ==================== JOIN SCREEN (WhatsApp Style) ==================== */
 .join-container {
   background: #ffffff;
-  padding: 30px 20px;
+  padding: 40px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   max-width: 400px;
-  width: 90%; /* Mobile friendly */
-  margin: 20px;
+  width: 100%;
 }
 
 .join-container h1 {
   color: #00a884;
-  margin-bottom: 25px;
-  font-size: 24px;
+  margin-bottom: 30px;
+  font-size: 28px;
   font-weight: 500;
 }
 
@@ -55,7 +58,6 @@ body {
   transition: border 0.3s;
   color: #3b4a54;
   background-color: #ffffff;
-  -webkit-appearance: none; /* Fix iOS styling */
 }
 
 .join-container input::placeholder {
@@ -78,77 +80,71 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
-  -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
 }
 
-.join-container button:active {
+.join-container button:hover {
   background: #008069;
 }
 
-/* ==================== CHAT CONTAINER (Mobile First) ==================== */
+/* ==================== CHAT CONTAINER (WhatsApp Style) ==================== */
 .chat-container {
   background: #ffffff;
-  border-radius: 0; /* No border radius on mobile for full screen */
-  box-shadow: none;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
-  max-width: 100%;
-  height: 100vh;
-  height: 100dvh; /* Dynamic viewport height for mobile */
+  max-width: 1200px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
 
-/* ==================== CHAT HEADER (Fixed Mobile) ==================== */
+/* ==================== CHAT HEADER (WhatsApp Green) ==================== */
 .chat-header {
   background: #00a884;
   color: white;
-  padding: 12px 16px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  flex-shrink: 0;
-  min-height: 60px;
 }
 
 .chat-header h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
 }
 
 .chat-header p {
   margin: 3px 0 0 0;
   opacity: 0.9;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
 }
 
 .leave-btn {
-  padding: 8px 14px;
+  padding: 8px 16px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
   border-radius: 6px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   transition: background 0.3s;
-  -webkit-tap-highlight-color: transparent;
 }
 
-.leave-btn:active {
+.leave-btn:hover {
   background: rgba(255, 255, 255, 0.3);
 }
 
-/* ==================== CHAT MAIN AREA (Mobile Flex) ==================== */
+/* ==================== CHAT MAIN AREA ==================== */
 .chat-main {
   display: flex;
   flex: 1;
   overflow: hidden;
   background: #efeae2;
-  position: relative;
 }
 
 .messages-container {
@@ -156,30 +152,27 @@ body {
   display: flex;
   flex-direction: column;
   background: #efeae2;
-  padding: 10px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23d9dbd5" opacity="0.3"/></svg>');
+  padding: 20px;
   position: relative;
-  overflow: hidden;
 }
 
 .messages-list {
   flex: 1;
   overflow-y: auto;
-  overflow-x: hidden;
-  padding: 10px;
+  padding-right: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
-/* ==================== WHATSAPP-STYLE MESSAGE BUBBLES (Mobile) ==================== */
+/* ==================== WHATSAPP-STYLE MESSAGE BUBBLES ==================== */
 .message {
   padding: 8px 12px;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   border-radius: 8px;
-  max-width: 80%; /* Better for mobile */
+  max-width: 65%;
   word-wrap: break-word;
-  word-break: break-word;
   font-size: 14px;
   line-height: 1.4;
   position: relative;
@@ -187,6 +180,7 @@ body {
   clear: both;
 }
 
+/* Other user messages (white bubble, left side) */
 .message {
   background: #ffffff;
   color: #111b21;
@@ -204,13 +198,14 @@ body {
 }
 
 .timestamp {
-  font-size: 10px;
+  font-size: 11px;
   color: #667781;
   margin-left: 8px;
   float: right;
   margin-top: 4px;
 }
 
+/* Your own messages (green bubble, right side) */
 .own-message {
   background: #d9fdd3;
   color: #111b21;
@@ -228,14 +223,15 @@ body {
   color: #667781;
 }
 
+/* System messages (yellow/beige, centered) */
 .system-message {
   background: #fff4ce;
   color: #3b4a54;
   text-align: center;
-  max-width: 85%;
+  max-width: 80%;
   font-style: normal;
-  font-size: 12px;
-  padding: 7px 12px;
+  font-size: 13px;
+  padding: 8px 12px;
   margin: 8px auto;
   align-self: center;
   box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
@@ -253,21 +249,19 @@ body {
   padding: 8px 12px;
   color: #667781;
   font-style: italic;
-  font-size: 12px;
+  font-size: 13px;
   min-height: 30px;
   margin-left: 10px;
 }
 
-/* ==================== MOBILE MESSAGE INPUT (Fixed Bottom) ==================== */
+/* ==================== WHATSAPP-STYLE MESSAGE INPUT ==================== */
 .message-input-container {
   display: flex;
   gap: 8px;
-  padding: 8px 12px;
+  padding: 10px 16px;
   background: #f0f2f5;
   border-top: 1px solid #d1d7db;
   align-items: center;
-  flex-shrink: 0;
-  position: relative;
 }
 
 .message-input {
@@ -279,8 +273,6 @@ body {
   color: #3b4a54;
   background-color: #ffffff;
   transition: background-color 0.3s;
-  -webkit-appearance: none;
-  min-height: 40px;
 }
 
 .message-input::placeholder {
@@ -294,7 +286,7 @@ body {
 }
 
 .send-btn {
-  padding: 10px 18px;
+  padding: 10px 20px;
   background: #00a884;
   color: white;
   border: none;
@@ -302,18 +294,15 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s;
-  font-size: 14px;
-  flex-shrink: 0;
-  -webkit-tap-highlight-color: transparent;
+  font-size: 15px;
 }
 
-.send-btn:active {
+.send-btn:hover {
   background: #008069;
 }
 
-/* ==================== ONLINE USERS (Mobile Hidden by Default) ==================== */
+/* ==================== ONLINE USERS SIDEBAR (WhatsApp Style) ==================== */
 .online-users {
-  display: none; /* Hide on mobile */
   width: 260px;
   background: #ffffff;
   padding: 20px 16px;
@@ -321,53 +310,103 @@ body {
   overflow-y: auto;
 }
 
-/* ==================== SCROLLBAR ==================== */
-.messages-list::-webkit-scrollbar {
-  width: 4px;
+.online-users h3 {
+  color: #00a884;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
-.messages-list::-webkit-scrollbar-track {
+.online-users ul {
+  list-style: none;
+}
+
+.online-users li {
+  padding: 12px 10px;
+  margin-bottom: 4px;
+  background: #f0f2f5;
+  border-radius: 8px;
+  color: #3b4a54;
+  font-weight: 400;
+  font-size: 14px;
+  border-left: 3px solid #00a884;
+  transition: background 0.2s;
+}
+
+.online-users li:hover {
+  background: #e9edef;
+}
+
+.online-users .current-user {
+  background: #d9fdd3;
+  border-left-color: #00a884;
+  font-weight: 500;
+  color: #111b21;
+}
+
+/* ==================== SCROLLBAR (WhatsApp Style) ==================== */
+.messages-list::-webkit-scrollbar,
+.online-users::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-list::-webkit-scrollbar-track,
+.online-users::-webkit-scrollbar-track {
   background: transparent;
 }
 
-.messages-list::-webkit-scrollbar-thumb {
+.messages-list::-webkit-scrollbar-thumb,
+.online-users::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
 
-/* ==================== DESKTOP MEDIA QUERY ==================== */
-@media (min-width: 768px) {
-  .app-container {
-    padding: 20px;
-  }
-  
-  .chat-container {
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    max-width: 1200px;
-    height: 90vh;
-  }
-  
-  .online-users {
-    display: block; /* Show sidebar on desktop */
-  }
-  
-  .message {
-    max-width: 65%;
-  }
-  
-  .chat-header h2 {
-    font-size: 20px;
-  }
+.messages-list::-webkit-scrollbar-thumb:hover,
+.online-users::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
 }
 
-/* ==================== LARGE DESKTOP ==================== */
-@media (min-width: 1024px) {
-  .messages-container {
-    padding: 20px;
-  }
-  
-  .message-input-container {
-    padding: 10px 16px;
-  }
+/* ==================== PROFILE AVATARS IN ONLINE USERS ==================== */
+.online-users li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: #f0f2f5;
+  border-radius: 8px;
+  color: #3b4a54;
+  font-weight: 400;
+  font-size: 14px;
+  border-left: 3px solid #00a884;
+  transition: background 0.2s;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.user-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.online-users .current-user .user-avatar {
+  border: 2px solid #00a884;
+}
+
+.online-users .current-user {
+  background: #d9fdd3;
+  font-weight: 500;
 }
