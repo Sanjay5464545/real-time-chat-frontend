@@ -1,0 +1,21 @@
+{
+  "name": "Real-Time Chat",
+  "short_name": "Chat",
+  "description": "Real-time chat app with rooms and typing indicators",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#00a884",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
