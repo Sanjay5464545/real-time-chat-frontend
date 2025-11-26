@@ -447,3 +447,56 @@ body {
     display: none !important;
   }
 }
+/* PASTE THIS AT THE VERY BOTTOM OF APP.CSS */
+
+/* Fix font size to stop auto-zoom on iPhone */
+input, select, textarea {
+  font-size: 16px !important;
+}
+
+@media screen and (max-width: 768px) {
+  /* Force app to take full screen width/height */
+  body, #root, .app-container {
+    width: 100% !important;
+    height: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    position: fixed;
+  }
+
+  /* Reset the main chat box to fill screen */
+  .chat-container {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Hide the sidebar on mobile */
+  .online-users {
+    display: none !important;
+  }
+
+  /* Ensure message list takes available space */
+  .chat-main {
+    flex: 1;
+    height: auto;
+  }
+  
+  .messages-container {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Fix input area size */
+  .message-input-container {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

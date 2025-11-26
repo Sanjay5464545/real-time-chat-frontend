@@ -27,9 +27,11 @@ body {
   padding: 0;
   min-width: 0;
   min-height: 100vh;
-  background-color: #111b21; /* or whatever background you want */
-  overflow: hidden;          /* optional: prevent scroll outside app */
-  display: block;            /* IMPORTANT: remove flex centering */
+  background-color: #111b21; 
+  overflow: hidden;          
+  display: block;
+  /* This line below stops the double-tap zoom on mobile */
+  touch-action: manipulation;
 }
 
 h1 {
