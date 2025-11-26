@@ -500,3 +500,71 @@ input, select, textarea {
     box-sizing: border-box;
   }
 }
+/* === Mobile fix: stop auto-zoom + force true mobile layout ===
+   Paste this block at the VERY END of App.css
+*/
+
+html, body {
+  -webkit-text-size-adjust: 100%; /* prevent font scaling/auto-zoom on iOS */
+  touch-action: manipulation;     /* prevent double-tap zoom behavior */
+  -ms-touch-action: manipulation;
+  width: 100%;
+  height: 100%;
+}
+
+#root, .app-container {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+}
+
+/* Ensure inputs keep 16px to avoid mobile zoom */
+input, textarea, select, button {
+  font-size: 16px !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make the chat container and message area use full viewport height */
+.chat-container {
+  width: 100% !important;
+  height: 100vh !important;
+  min-height: 100vh !important;
+  max-width: 100% !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+/* Message list should scroll and not expand causing zoom */
+.messages-list {
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(100vh - 150px) !important; /* header + input reserved */
+}
+
+/* Input area stick to bottom and be easily tappable */
+.message-input-container {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  padding: 10px !important;
+  background: #ffffff;
+}
+
+/* Avoid any transforms that can trigger weird zoom or pixel rounding */
+* {
+  transform: none !important;
+  backface-visibility: hidden !important;
+}
+
+/* Small-screen polish */
+@media screen and (max-width: 820px) {
+  body { overflow: auto; }
+  .join-container { padding: 16px; }
+  .message { font-size: 15px; max-width: 78vw; }
+  .messages-list { padding: 8px; }
+}
