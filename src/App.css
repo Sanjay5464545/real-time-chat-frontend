@@ -410,3 +410,199 @@ body {
   background: #d9fdd3;
   font-weight: 500;
 }
+/* =========================
+   MOBILE: WhatsApp-like UI
+   (Append this to the end of App.css)
+   ========================= */
+
+/* Mobile-first adjustments */
+:root {
+  --whatsapp-green: #00a884;
+  --bg: #f6f7f8;
+  --bubble-self: #dcf8c6;
+  --bubble-other: #ffffff;
+  --muted: #667781;
+}
+
+/* Make app use full screen on mobile */
+.app-container {
+  padding: 10px;
+  height: 100vh;
+  align-items: stretch;
+}
+
+/* Reduce join container padding on small screens */
+.join-container {
+  padding: 20px;
+  max-width: 480px;
+  width: calc(100% - 20px);
+}
+
+/* Chat container becomes full height and full width */
+.chat-container {
+  height: 100vh;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Header smaller and sticky */
+.chat-header {
+  padding: 10px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.chat-header h2 { font-size: 16px; margin: 0; }
+.chat-header p { font-size: 12px; margin: 0; opacity: 0.9; }
+
+/* Messages area fills the space between header and input */
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 120px); /* header + input area reserved */
+  gap: 0;
+  padding: 0 10px;
+  background: var(--bg);
+}
+
+/* Messages container: card-like on mobile */
+.messages-container {
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 12px;
+  background: transparent;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* messages list is flexible and scrolls */
+.messages-list {
+  overflow-y: auto;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Bubble tweaks */
+.message {
+  max-width: 86%;
+  padding: 10px 12px;
+  border-radius: 18px;
+  font-size: 15px;
+  line-height: 1.35;
+  box-shadow: none;
+}
+
+/* Other user: left aligned, white */
+.message {
+  background: var(--bubble-other);
+  color: #0b1416;
+  align-self: flex-start;
+  border-top-left-radius: 6px;
+}
+
+/* Own message: right aligned, green */
+.own-message {
+  background: var(--bubble-self);
+  align-self: flex-end;
+  border-top-right-radius: 6px;
+}
+
+/* Timestamps smaller and below message */
+.message .timestamp,
+.own-message .timestamp {
+  display: block;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+/* Typing indicator keep small and sticky near input */
+.typing-indicator {
+  padding: 6px 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Message input bar fixed at bottom */
+.message-input-container {
+  position: sticky;
+  bottom: 0;
+  background: #ffffff;
+  padding: 10px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  border-top: 1px solid #e6e6e6;
+  z-index: 50;
+}
+.message-input {
+  border-radius: 999px;
+  padding: 12px 14px;
+  font-size: 15px;
+}
+.send-btn {
+  border-radius: 999px;
+  padding: 10px 14px;
+  min-width: 72px;
+}
+
+/* Hide online users sidebar on small screens */
+.online-users {
+  display: none !important;
+}
+
+/* Improve avatar sizes in message list (if used inside messages) */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  font-size: 13px;
+}
+
+/* Make clickable elements larger */
+button, .send-btn, .leave-btn, input[type="text"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0,0,0,0.06);
+}
+
+/* Small-screen adjustments */
+@media (min-width: 820px) {
+  /* revert to desktop layout on larger screens */
+  .chat-main {
+    flex-direction: row;
+    gap: 12px;
+    height: calc(100vh - 80px);
+    padding: 20px;
+  }
+  .messages-container {
+    flex: 1 1 0;
+    min-height: 60vh;
+    margin: 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+  }
+  .online-users {
+    display: block;
+    width: 260px;
+  }
+  .message-input-container {
+    position: static;
+    padding: 12px 0;
+  }
+}
+
+/* small polish: ensure message list scroll starts at bottom on load (if JS handles it) */
+.messages-list:focus {
+  outline: none;
+}
