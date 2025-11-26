@@ -24,12 +24,10 @@ a:hover {
 
 body {
   margin: 0;
-  padding: 0;
-  min-width: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
   min-height: 100vh;
-  background-color: #111b21; /* or whatever background you want */
-  overflow: hidden;          /* optional: prevent scroll outside app */
-  display: block;            
 }
 
 h1 {
