@@ -7,23 +7,26 @@
 body {
   font-family: 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: #111b21;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-}
-
-/* Container centers content on Desktop, fills screen on Mobile */
-.app-container {
-  width: 100%;
-  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #111b21;
 }
 
-/* ==================== JOIN SCREEN ==================== */
+
+.app-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* ==================== JOIN SCREEN (WhatsApp Style) ==================== */
 .join-container {
   background: #ffffff;
   padding: 40px;
@@ -31,7 +34,7 @@ body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
   max-width: 400px;
-  width: 90%;
+  width: 100%;
 }
 
 .join-container h1 {
@@ -83,53 +86,57 @@ body {
   background: #008069;
 }
 
-/* ==================== CHAT CONTAINER ==================== */
+/* ==================== CHAT CONTAINER (WhatsApp Style) ==================== */
 .chat-container {
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  width: 95%;
-  max-width: 1400px;
-  height: 95vh;
+  width: 100%;
+  max-width: 1200px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
 }
 
-/* ==================== CHAT HEADER ==================== */
+/* ==================== CHAT HEADER (WhatsApp Green) ==================== */
 .chat-header {
   background: #00a884;
   color: white;
-  padding: 10px 15px;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  min-height: 60px;
-  z-index: 10;
 }
 
 .chat-header h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 500;
 }
 
 .chat-header p {
-  margin: 2px 0 0 0;
+  margin: 3px 0 0 0;
   opacity: 0.9;
-  font-size: 12px;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 .leave-btn {
-  padding: 6px 12px;
+  padding: 8px 16px;
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: white;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 13px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.leave-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
 }
 
 /* ==================== CHAT MAIN AREA ==================== */
@@ -138,7 +145,6 @@ body {
   flex: 1;
   overflow: hidden;
   background: #efeae2;
-  position: relative;
 }
 
 .messages-container {
@@ -147,136 +153,168 @@ body {
   flex-direction: column;
   background: #efeae2;
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23d9dbd5" opacity="0.3"/></svg>');
+  padding: 20px;
   position: relative;
-  width: 100%;
 }
 
 .messages-list {
   flex: 1;
   overflow-y: auto;
-  padding: 10px 15px;
+  padding-right: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
-/* ==================== BUBBLES ==================== */
+/* ==================== WHATSAPP-STYLE MESSAGE BUBBLES ==================== */
 .message {
-  padding: 6px 10px;
-  margin-bottom: 4px;
+  padding: 8px 12px;
+  margin-bottom: 8px;
   border-radius: 8px;
-  max-width: 75%;
+  max-width: 65%;
   word-wrap: break-word;
   font-size: 14px;
   line-height: 1.4;
   position: relative;
   box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
-  display: flex;
-  flex-direction: column;
+  clear: both;
 }
 
-/* Other user messages */
+/* Other user messages (white bubble, left side) */
 .message {
   background: #ffffff;
   color: #111b21;
   align-self: flex-start;
-  border-top-left-radius: 0;
+  margin-right: auto;
 }
 
 .message strong {
   color: #00a884;
+  margin-right: 6px;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 13px;
+  display: block;
   margin-bottom: 2px;
 }
 
 .timestamp {
-  font-size: 10px;
+  font-size: 11px;
   color: #667781;
-  align-self: flex-end;
-  margin-top: 2px;
-  margin-left: 5px;
+  margin-left: 8px;
+  float: right;
+  margin-top: 4px;
 }
 
-/* Own messages */
+/* Your own messages (green bubble, right side) */
 .own-message {
   background: #d9fdd3;
+  color: #111b21;
   align-self: flex-end;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 0;
+  margin-left: auto;
+  margin-right: 0;
 }
 
-/* System messages */
+.own-message strong {
+  color: #00a884;
+  font-weight: 600;
+}
+
+.own-message .timestamp {
+  color: #667781;
+}
+
+/* System messages (yellow/beige, centered) */
 .system-message {
   background: #fff4ce;
   color: #3b4a54;
   text-align: center;
-  max-width: 90%;
-  font-size: 12px;
-  padding: 5px 10px;
-  margin: 10px auto;
+  max-width: 80%;
+  font-style: normal;
+  font-size: 13px;
+  padding: 8px 12px;
+  margin: 8px auto;
   align-self: center;
-  border-radius: 8px;
   box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.1);
 }
 
-.typing-indicator {
-  padding: 5px 15px;
-  color: #667781;
-  font-style: italic;
-  font-size: 12px;
-  min-height: 25px;
+.system-message strong {
+  color: #3b4a54;
+  font-weight: 500;
+  display: inline;
+  margin: 0;
 }
 
-/* ==================== INPUT AREA ==================== */
+/* ==================== TYPING INDICATOR ==================== */
+.typing-indicator {
+  padding: 8px 12px;
+  color: #667781;
+  font-style: italic;
+  font-size: 13px;
+  min-height: 30px;
+  margin-left: 10px;
+}
+
+/* ==================== WHATSAPP-STYLE MESSAGE INPUT ==================== */
 .message-input-container {
   display: flex;
   gap: 8px;
-  padding: 8px 10px;
+  padding: 10px 16px;
   background: #f0f2f5;
   border-top: 1px solid #d1d7db;
   align-items: center;
-  min-height: 60px;
 }
 
 .message-input {
   flex: 1;
   padding: 10px 16px;
   border: none;
-  border-radius: 20px;
+  border-radius: 24px;
   font-size: 15px;
   color: #3b4a54;
   background-color: #ffffff;
+  transition: background-color 0.3s;
+}
+
+.message-input::placeholder {
+  color: #8696a0;
+  opacity: 1;
 }
 
 .message-input:focus {
   outline: none;
+  background-color: #ffffff;
 }
 
 .send-btn {
-  padding: 10px 15px;
+  padding: 10px 20px;
   background: #00a884;
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 24px;
   font-weight: 500;
   cursor: pointer;
-  font-size: 14px;
+  transition: background 0.3s;
+  font-size: 15px;
 }
 
-/* ==================== SIDEBAR ==================== */
+.send-btn:hover {
+  background: #008069;
+}
+
+/* ==================== ONLINE USERS SIDEBAR (WhatsApp Style) ==================== */
 .online-users {
-  width: 250px;
+  width: 260px;
   background: #ffffff;
-  padding: 10px;
+  padding: 20px 16px;
   border-left: 1px solid #d1d7db;
   overflow-y: auto;
 }
 
 .online-users h3 {
   color: #00a884;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .online-users ul {
@@ -284,79 +322,128 @@ body {
 }
 
 .online-users li {
-  padding: 8px;
+  padding: 12px 10px;
   margin-bottom: 4px;
   background: #f0f2f5;
-  border-radius: 5px;
+  border-radius: 8px;
   color: #3b4a54;
-  font-size: 13px;
+  font-weight: 400;
+  font-size: 14px;
+  border-left: 3px solid #00a884;
+  transition: background 0.2s;
+}
+
+.online-users li:hover {
+  background: #e9edef;
+}
+
+.online-users .current-user {
+  background: #d9fdd3;
+  border-left-color: #00a884;
+  font-weight: 500;
+  color: #111b21;
+}
+
+/* ==================== SCROLLBAR (WhatsApp Style) ==================== */
+.messages-list::-webkit-scrollbar,
+.online-users::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages-list::-webkit-scrollbar-track,
+.online-users::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.messages-list::-webkit-scrollbar-thumb,
+.online-users::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.messages-list::-webkit-scrollbar-thumb:hover,
+.online-users::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== PROFILE AVATARS IN ONLINE USERS ==================== */
+.online-users li {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  background: #f0f2f5;
+  border-radius: 8px;
+  color: #3b4a54;
+  font-weight: 400;
+  font-size: 14px;
+  border-left: 3px solid #00a884;
+  transition: background 0.2s;
 }
 
 .user-avatar {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: #ccc;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
   color: white;
+  font-weight: 600;
+  font-size: 14px;
+  flex-shrink: 0;
 }
 
-/* ==================== MOBILE OPTIMIZATION ==================== */
-/* This is the part that fixes the Mobile View */
-@media (max-width: 768px) {
-  .app-container {
-    padding: 0;
-    width: 100vw;
-    height: 100dvh; /* Dynamic height for mobile browsers */
-  }
+.user-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-  .chat-container {
-    width: 100%;
-    height: 100%; /* Fill the container */
-    max-width: 100%;
+.online-users .current-user .user-avatar {
+  border: 2px solid #00a884;
+}
+
+.online-users .current-user {
+  background: #d9fdd3;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .app-container, .chat-container, .join-container {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
     border-radius: 0;
     box-shadow: none;
     margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
   }
-
-  .join-container {
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    border-radius: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .chat-header, .message-input-container {
+    min-width: 100vw;
+    max-width: 100vw;
+    padding-left: 8px;
+    padding-right: 8px;
   }
-
+  .messages-container, .messages-list {
+    padding: 8px 4px;
+    max-width: 100vw;
+  }
+  .message {
+    max-width: 72vw;
+    font-size: 15px;
+    padding: 8px 11px 5px;
+  }
+  .system-message {
+    font-size: 13px;
+    padding: 7px 11px;
+    max-width: 90vw;
+  }
   .online-users {
-    display: none; /* Hide sidebar on mobile */
-  }
-
-  .chat-main {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .messages-container {
-    height: 100%;
-  }
-
-  /* Make touch targets bigger for mobile */
-  .send-btn {
-    padding: 12px 20px;
-  }
-  
-  .message-input {
-    padding: 12px 16px;
+    display: none !important;
   }
 }
