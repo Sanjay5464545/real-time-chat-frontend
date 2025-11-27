@@ -550,10 +550,34 @@ body {
   }
   
   /* ===== HIDE ONLINE USERS SIDEBAR ON MOBILE ===== */
-  .online-users {
-    display: none;
-  }
-  
+  /* ===== SHOW ONLINE USERS AT BOTTOM ON MOBILE ===== */
+.online-users {
+  width: 100%;
+  max-height: 140px;
+  border-left: none;
+  border-top: 2px solid #00a884;
+  padding: 10px 12px;
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+
+.online-users h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.online-users li {
+  padding: 8px 10px;
+  font-size: 13px;
+  margin-bottom: 3px;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 12px;
+}
+
   /* ===== TYPING INDICATOR - Mobile ===== */
   .typing-indicator {
     font-size: 12px;
